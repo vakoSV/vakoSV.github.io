@@ -72,26 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const responseData = await response.json();
-            console.log("Make.com response received:", responseData);
+            // Read raw text first — Make.com sometimes sends plain text, sometimes JSON
+            const rawText = await response.text();
+            console.log("Make.com raw response:", rawText);
 
             let replyText = "I received your message but couldn't parse the response.";
 
-            // Make.com often returns an ARRAY: [{ body: "...", status: 200, headers: [] }]
-            // Handle that first, then fall back to plain object / string formats
-            const data = Array.isArray(responseData) ? responseData[0] : responseData;
+            try {
+                // Attempt to parse as JSON (handles array or object formats)
+                const responseData = JSON.parse(rawText);
+                const data = Array.isArray(responseData) ? responseData[0] : responseData;
 
-            if (data && data.body && typeof data.body === 'string') {
-                replyText = data.body;
-            } else if (data && data.reply && typeof data.reply === 'string') {
-                replyText = data.reply;
-            } else if (data && data.message && typeof data.message === 'string') {
-                replyText = data.message;
-            } else if (typeof data === 'string') {
-                replyText = data;
-            } else {
-                // Last resort — dump raw JSON so we can debug what shape arrived
-                replyText = JSON.stringify(data);
+                if (data && data.body && typeof data.body === 'string') {
+                    replyText = data.body;
+                } else if (data && data.reply && typeof data.reply === 'string') {
+                    replyText = data.reply;
+                } else if (data && data.message && typeof data.message === 'string') {
+                    replyText = data.message;
+                } else if (typeof data === 'string') {
+                    replyText = data;
+                } else {
+                    replyText = JSON.stringify(data);
+                }
+            } catch (e) {
+                // Not JSON — use the raw string directly as the AI reply
+                if (rawText && rawText.trim().length > 0) {
+                    replyText = rawText.trim();
+                }
             }
 
             removeTypingIndicator();
