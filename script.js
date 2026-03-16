@@ -48,15 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. Show typing indicator
         addTypingIndicator();
 
-        // 4. Async webhook fetch with timeout
+        // 4. Async webhook fetch with 30s timeout
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 seconds timeout
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds timeout
 
         try {
             console.log("Sending payload to Make.com:", { message: message });
             
             const response = await fetch(webhookUrl, {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -98,19 +99,23 @@ document.addEventListener('DOMContentLoaded', () => {
             removeTypingIndicator();
             
             if (error.name === 'AbortError') {
-                console.error("Fetch request to Make.com timed out after 15 seconds.");
-                addMessage("The AI took too long to respond. Please try again.", true);
+                console.error("Exact Fetch Error: ", error);
+                addMessage("The AI took too long to respond (30s timeout). Please try again.", true);
             } else {
-                console.error("Fetch error or JSON parsing failed:", error);
+                console.error("Exact Fetch Error: ", error);
                 addMessage("Service is currently offline or the workflow failed. Please check the console for details.", true);
             }
         }
     }
 
-    sendBtn.addEventListener('click', handleSendMessage);
+    sendBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleSendMessage();
+    });
     
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault();
             handleSendMessage();
         }
     });
