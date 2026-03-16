@@ -75,20 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseData = await response.json();
             console.log("Make.com response received:", responseData);
 
-            let replyText = "Success! I received your message via workflow.";
-            
-            // Extract AI text based on typical Make.com webhook responses or OpenAI modules
-            if (responseData && responseData.reply) {
-                replyText = responseData.reply;
-            } else if (responseData && responseData.body) {
-                replyText = responseData.body; // Sometimes it's wrapped in a body property
-            } else if (typeof responseData === 'string') {
-                replyText = responseData;
-            } else if (responseData && responseData.message) {
-                replyText = responseData.message;
+            let replyText = "I received your message but couldn't parse the response.";
+
+            // Make.com often returns an ARRAY: [{ body: "...", status: 200, headers: [] }]
+            // Handle that first, then fall back to plain object / string formats
+            const data = Array.isArray(responseData) ? responseData[0] : responseData;
+
+            if (data && data.body && typeof data.body === 'string') {
+                replyText = data.body;
+            } else if (data && data.reply && typeof data.reply === 'string') {
+                replyText = data.reply;
+            } else if (data && data.message && typeof data.message === 'string') {
+                replyText = data.message;
+            } else if (typeof data === 'string') {
+                replyText = data;
             } else {
-                 // Fallback if structure is unexpected
-                 replyText = JSON.stringify(responseData);
+                // Last resort — dump raw JSON so we can debug what shape arrived
+                replyText = JSON.stringify(data);
             }
 
             removeTypingIndicator();
