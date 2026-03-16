@@ -211,15 +211,12 @@ body {
     max-width: 480px;
     height: auto;
     border-radius: 20px;
-    border: 2px solid rgba(6, 182, 212, 0.4);
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.15), 0 20px 60px rgba(0, 0, 0, 0.5);
     object-fit: cover;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease;
 }
 
 .hero-img:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 60px rgba(6, 182, 212, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes floatIn {
