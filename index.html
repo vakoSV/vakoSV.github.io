@@ -1,1 +1,161 @@
-<h1>Hello World - vakoSV Portfolio is Live</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeri Bendeliani | AI Systems Engineer</title>
+    <meta name="description" content="Portfolio of Valeri Bendeliani, AI Systems Engineer & Workflow Architect.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">Valeri<span class="accent">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#chat-agent">AI Resume</a></li>
+                <li><a href="#tech-stack">Tech Stack</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#automations">Automations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section hero">
+        <div class="hero-content">
+            <h1>Valeri Bendeliani</h1>
+            <h2>AI Systems Engineer <span class="accent">&</span> Workflow Architect</h2>
+            <p class="subtitle">"Transitioning enterprise operations from manual processes to AI-driven workflows."</p>
+            <div class="hero-actions">
+                <a href="#automations" class="btn btn-primary">View Automations</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-bg-glow"></div>
+    </section>
+
+    <!-- Interactive Resume Section -->
+    <section id="chat-agent" class="section">
+        <h2 class="section-title">Ask My <span class="accent">AI Agent</span></h2>
+        <div class="chat-container">
+            <div class="chat-profile">
+                <!-- Placeholder for profile picture -->
+                <img src="assets/valeri-profile.png" alt="Valeri Bendeliani" class="profile-img" onerror="this.src='https://via.placeholder.com/400x400/1e293b/06b6d4?text=Profile+Image'">
+                <div class="profile-info">
+                    <h3>Interactive Resume</h3>
+                    <p>Ask anything about my experience, skills, or projects.</p>
+                </div>
+            </div>
+            <div class="chat-interface">
+                <div class="chat-window" id="chat-window">
+                    <div class="message ai-message">
+                        Hello! I am Valeri's AI assistant. How can I help you learn more about his work today?
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Ask my AI about my experience..." aria-label="Chat input">
+                    <button id="send-btn" class="btn btn-primary send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="section">
+        <h2 class="section-title">Core <span class="accent">Technologies</span></h2>
+        <div class="grid tech-grid">
+            <div class="card tech-card">
+                <h3>AI & LLMs</h3>
+                <p>Custom RAG, OpenAI, Anthropic, Open WebUI.</p>
+            </div>
+            <div class="card tech-card">
+                <h3>Voice AI</h3>
+                <p>Vapi, Retell, ElevenLabs.</p>
+            </div>
+            <div class="card tech-card">
+                <h3>Automation</h3>
+                <p>n8n, Make.com, Docker, Render.</p>
+            </div>
+            <div class="card tech-card">
+                <h3>Databases/CRM</h3>
+                <p>Supabase, Pinecone, GoHighLevel, Airtable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Experience <span class="accent">Highlights</span></h2>
+        <div class="grid projects-grid">
+            <div class="card project-card">
+                <h3>Enterprise Internal AI Assistant</h3>
+                <p class="highlight">Highlight: Supabase vector DB, RBAC implementation, n8n orchestration.</p>
+                <div class="card-glow"></div>
+            </div>
+            <div class="card project-card">
+                <h3>Automated Customer Onboarding</h3>
+                <p class="highlight">Highlight: Zero-touch pipeline, Make.com workflows, dynamic CRM segmentation.</p>
+                <div class="card-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automations Section -->
+    <section id="automations" class="section">
+        <h2 class="section-title">Workflow <span class="accent">Blueprints</span></h2>
+        <div class="grid automations-grid">
+            <div class="card automation-card">
+                <div class="img-wrapper">
+                    <img src="assets/workflow-1.png" alt="Make Workflow" onerror="this.src='https://via.placeholder.com/600x300/1e293b/06b6d4?text=Workflow+Blueprint'">
+                </div>
+                <div class="card-content">
+                    <h3>Zero-Touch Onboarding Blueprint</h3>
+                    <a href="#" target="_blank" class="btn btn-outline btn-sm">View Interactive Blueprint</a>
+                </div>
+            </div>
+            <div class="card automation-card">
+                <div class="img-wrapper">
+                    <img src="assets/workflow-2.png" alt="Make Workflow" onerror="this.src='https://via.placeholder.com/600x300/1e293b/06b6d4?text=Workflow+Blueprint'">
+                </div>
+                <div class="card-content">
+                    <h3>AI Lead Qualification</h3>
+                    <a href="#" target="_blank" class="btn btn-outline btn-sm">View Interactive Blueprint</a>
+                </div>
+            </div>
+            <div class="card automation-card">
+                <div class="img-wrapper">
+                    <img src="assets/workflow-3.png" alt="Make Workflow" onerror="this.src='https://via.placeholder.com/600x300/1e293b/06b6d4?text=Workflow+Blueprint'">
+                </div>
+                <div class="card-content">
+                    <h3>Automated Support Routing</h3>
+                    <a href="#" target="_blank" class="btn btn-outline btn-sm">View Interactive Blueprint</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:valeri.bendeliani11@gmail.com" class="accent-link">valeri.bendeliani11@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+995568260195" class="accent-link">+995 568 260 195</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/valeri-bendeliani-b970821" target="_blank" class="accent-link">linkedin.com/in/valeri-bendeliani-b970821</a></p>
+            <p class="status">🌍 Remote/Global Availability</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Valeri Bendeliani. Built with AI & Automations.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
