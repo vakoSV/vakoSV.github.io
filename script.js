@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const chatWindow = document.getElementById('chat-window');
+    const chatFallback = document.getElementById('chat-fallback');
     
     // The placeholder webhook url from the user's prompt
     const webhookUrl = 'https://hook.us1.make.com/bf15a3cgco1lm3wl3aq3clb9wf3qefpc';
@@ -41,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Add user message
         addMessage(message, false);
+
+        if (chatFallback) {
+            chatFallback.classList.add('is-hidden');
+        }
         
         // 2. Clear input
         chatInput.value = '';
