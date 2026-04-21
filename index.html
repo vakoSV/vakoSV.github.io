@@ -137,145 +137,51 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <h2 class="section-title">Experience <span class="accent">Highlights</span></h2>
-        <div class="grid projects-grid">
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>1. Enterprise Internal AI Assistant & RAG Architecture</h3>
-                    <p>Secure internal assistant with role-aware retrieval, policy controls, and grounded responses.</p>
-                    <ul class="project-metrics">
-                        <li>RBAC by clearance</li>
-                        <li>RAG over private docs</li>
-                        <li>Self-hosted infra</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Built Open WebUI + n8n orchestration with Supabase vectors, strict role gating for sensitive financial context, and Docker/Render hosting for privacy and uptime control.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/local-docs-rag.png" alt="Enterprise internal AI assistant architecture">
-                    <span class="pulse-tag" style="top: 16%; left: 9%;">Open WebUI</span>
-                    <span class="pulse-tag" style="top: 45%; left: 36%;">n8n</span>
-                    <span class="pulse-tag" style="top: 71%; left: 60%;">Supabase</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
+        <div class="projects-flow-shell">
+            <div class="projects-flow-line" aria-hidden="true"></div>
+            <div class="grid projects-grid">
+                <article class="card process-card c-cyan">
+                    <span class="step-pill">Step 1</span>
+                    <h3>Internal AI Assistant with Secure RAG</h3>
+                    <p>Automated role-gated answers from private docs and vector retrieval.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
 
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>2. End-to-End Automated Customer Onboarding</h3>
-                    <p>Zero-touch onboarding from lead capture to payment confirmation with smart follow-up routing.</p>
-                    <ul class="project-metrics">
-                        <li>Lead to payment</li>
-                        <li>CRM sync + segmentation</li>
-                        <li>Email/SMS automation</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Designed a Make.com/n8n pipeline that ingests lead webhooks, updates CRM systems, applies conditional segmentation, and triggers invoice/payment workflows plus multichannel follow-ups.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/onboarding-process.png" alt="Automated customer onboarding flow">
-                    <span class="pulse-tag" style="top: 19%; left: 12%;">Lead Form</span>
-                    <span class="pulse-tag" style="top: 45%; left: 38%;">Routing</span>
-                    <span class="pulse-tag" style="top: 73%; left: 67%;">Payment</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
+                <article class="card process-card c-green">
+                    <span class="step-pill">Step 2</span>
+                    <h3>Zero-Touch Onboarding Automation Pipeline</h3>
+                    <p>Automated lead intake, CRM routing, billing, and follow-up logic.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
 
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>3. AI Voice Agent & CRM Integration</h3>
-                    <p>High-volume voice automation with real-time lead scoring, routing, and calendar booking.</p>
-                    <ul class="project-metrics">
-                        <li>500+ calls/day</li>
-                        <li>70% faster response</li>
-                        <li>Airtable-connected</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Implemented multi-department voice agents integrated with Airtable and booking logic, while continuously improving NLP quality using structured call logs and feedback loops.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/voice-agent-retell.png" alt="AI voice agent architecture">
-                    <span class="pulse-tag" style="top: 15%; left: 10%;">Voice AI</span>
-                    <span class="pulse-tag" style="top: 43%; left: 40%;">CRM Sync</span>
-                    <span class="pulse-tag" style="top: 71%; left: 69%;">Calendar</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
+                <article class="card process-card c-blue">
+                    <span class="step-pill">Step 3</span>
+                    <h3>High-Volume AI Voice Operations</h3>
+                    <p>Processed 500+ daily calls with routing and booking automation.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
 
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>4. Backend Workflow & Lead Funnel Automation</h3>
-                    <p>Unified conversion architecture connecting traffic, nurture logic, and payment systems.</p>
-                    <ul class="project-metrics">
-                        <li>GHL-centered backend</li>
-                        <li>Cross-channel nurture</li>
-                        <li>Conversion-first design</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Built GoHighLevel-based journey orchestration with integrated calendars, messaging, and payment events to support stronger lead response and cleaner conversion pipelines.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/slack-notifications.png" alt="Lead funnel workflow architecture">
-                    <span class="pulse-tag" style="top: 15%; left: 8%;">Traffic</span>
-                    <span class="pulse-tag" style="top: 44%; left: 35%;">GHL Core</span>
-                    <span class="pulse-tag" style="top: 72%; left: 66%;">Conversion</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
+                <article class="card process-card c-purple">
+                    <span class="step-pill">Step 4</span>
+                    <h3>Lead Funnel Backend Orchestration</h3>
+                    <p>Unified traffic, nurture, and conversion into one backend engine.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
 
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>5. Database Architecture & Business Automation</h3>
-                    <p>Scalable CRM modeling from Airtable prototyping to production-ready structured systems.</p>
-                    <ul class="project-metrics">
-                        <li>Schema modernization</li>
-                        <li>Operational visibility</li>
-                        <li>60% onboarding reduction</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Mapped strict business rules into scalable CRM/database structures, then layered onboarding/follow-up automation to reduce manual overhead and improve reporting reliability.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/smartsuite-followups.png" alt="Database architecture and automation flow">
-                    <span class="pulse-tag" style="top: 17%; left: 10%;">Airtable</span>
-                    <span class="pulse-tag" style="top: 43%; left: 37%;">Schema</span>
-                    <span class="pulse-tag" style="top: 71%; left: 65%;">Automation</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
+                <article class="card process-card c-orange">
+                    <span class="step-pill">Step 5</span>
+                    <h3>Scalable CRM Database Architecture</h3>
+                    <p>Migrated prototypes into reliable, structured operational data systems.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
 
-            <article class="card project-visual-card">
-                <div class="project-copy">
-                    <h3>6. Expert Web Development & WordPress Architecture</h3>
-                    <p>Responsive front-end execution with practical API-ready architecture and QA alignment.</p>
-                    <ul class="project-metrics">
-                        <li>High-fidelity UI</li>
-                        <li>WordPress + custom CSS</li>
-                        <li>API-aware delivery</li>
-                    </ul>
-                    <details class="project-details">
-                        <summary>Read full case study</summary>
-                        <p>Delivered responsive interfaces in HTML/CSS/WordPress with tight design-QA collaboration and architecture choices that supported endpoint integrations and long-term maintainability.</p>
-                    </details>
-                </div>
-                <div class="project-visual">
-                    <img src="assets/video-ad-creation.png" alt="Web development and production flow">
-                    <span class="pulse-tag" style="top: 16%; left: 10%;">Design</span>
-                    <span class="pulse-tag" style="top: 43%; left: 37%;">Build</span>
-                    <span class="pulse-tag" style="top: 72%; left: 65%;">Deploy</span>
-                    <span class="signal-line"></span>
-                </div>
-            </article>
-
+                <article class="card process-card c-pink">
+                    <span class="step-pill">Step 6</span>
+                    <h3>Responsive Web Delivery System</h3>
+                    <p>Shipped production UI with QA alignment and API readiness.</p>
+                    <div class="mini-flow" aria-hidden="true"><span></span><span></span><span></span></div>
+                </article>
+            </div>
         </div>
     </section>
 
