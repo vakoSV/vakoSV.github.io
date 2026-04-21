@@ -138,61 +138,200 @@
     <section id="projects" class="section">
         <h2 class="section-title">Experience <span class="accent">Highlights</span></h2>
         <div class="grid projects-grid">
-
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>1. Enterprise Internal AI Assistant & RAG Architecture</h3>
-                <p>Designed and deployed a secure, custom AI chat assistant utilizing Open WebUI, integrated via
-                    webhooks to an n8n orchestration layer. Engineered a RAG pipeline querying a Supabase vector
-                    database to ensure responses used strictly proprietary data.</p>
-                <p class="highlight">Highlight: Strict RBAC and self-hosted n8n environment via Docker and Render for
-                    absolute data privacy.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">Secure internal assistant with policy-aware retrieval and role-based response control.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 5%; top: 38%;">Open WebUI</span>
+                    <span class="flow-node" style="left: 33%; top: 12%;">n8n Core</span>
+                    <span class="flow-node" style="left: 33%; top: 64%;">RBAC</span>
+                    <span class="flow-node" style="left: 65%; top: 12%;">RAG Layer</span>
+                    <span class="flow-node" style="left: 65%; top: 64%;">Supabase Vector DB</span>
+                    <span class="flow-node" style="left: 84%; top: 38%;">Answer</span>
+                    <span class="flow-link" style="left: 16%; top: 48%; width: 20%; --delay: 0s;"></span>
+                    <span class="flow-link" style="left: 45%; top: 24%; width: 20%; --delay: 0.6s;"></span>
+                    <span class="flow-link" style="left: 45%; top: 72%; width: 20%; --delay: 1.2s;"></span>
+                    <span class="flow-link" style="left: 74%; top: 28%; width: 12%; transform: rotate(24deg); --delay: 1.8s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Grounded answers only from internal company documentation.</li>
+                    <li>RBAC gates sensitive financial context by user role.</li>
+                    <li>Self-hosted stack via Docker/Render for privacy and control.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Designed and deployed a secure custom AI chat assistant using Open WebUI with n8n orchestration.</li>
+                        <li>Engineered a Retrieval-Augmented Generation pipeline using Supabase vectors for proprietary knowledge retrieval.</li>
+                        <li>Implemented strict access segmentation between standard users and executive-level context.</li>
+                        <li>Managed environment reliability, privacy, and uptime through controlled self-hosted infrastructure.</li>
+                    </ul>
+                </details>
+            </article>
 
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>2. End-to-End Automated Customer Onboarding</h3>
-                <p>Architected a fully automated, zero-touch customer onboarding pipeline from initial lead capture to
-                    final payment reconciliation. Engineered complex iPaaS workflows (Make.com/n8n) to ingest webhooks,
-                    route to CRMs (GHL/Airtable), and trigger dynamic client segmentation.</p>
-                <p class="highlight">Highlight: Integrated secure API payment gateways and multi-channel (Email/SMS)
-                    follow-ups.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">Zero-touch pipeline from lead capture to paid conversion with conditional follow-up logic.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 4%; top: 38%;">Lead Form</span>
+                    <span class="flow-node" style="left: 26%; top: 16%;">Webhook</span>
+                    <span class="flow-node" style="left: 26%; top: 64%;">Segmentation</span>
+                    <span class="flow-node" style="left: 50%; top: 38%;">CRM Sync</span>
+                    <span class="flow-node" style="left: 70%; top: 16%;">Invoice API</span>
+                    <span class="flow-node" style="left: 70%; top: 64%;">SMS / Email</span>
+                    <span class="flow-node" style="left: 88%; top: 38%;">Paid Client</span>
+                    <span class="flow-link" style="left: 14%; top: 48%; width: 15%; --delay: 0.2s;"></span>
+                    <span class="flow-link" style="left: 32%; top: 27%; width: 18%; transform: rotate(18deg); --delay: 0.8s;"></span>
+                    <span class="flow-link" style="left: 32%; top: 72%; width: 18%; transform: rotate(-18deg); --delay: 1.4s;"></span>
+                    <span class="flow-link" style="left: 58%; top: 48%; width: 14%; --delay: 2s;"></span>
+                    <span class="flow-link" style="left: 78%; top: 48%; width: 10%; --delay: 2.6s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Automates intake, routing, billing, and status updates in real time.</li>
+                    <li>Supports dynamic client segmentation and conditional journeys.</li>
+                    <li>Eliminates drop-off through multi-channel follow-up automation.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Architected a full customer onboarding lifecycle from first touchpoint to payment confirmation.</li>
+                        <li>Built Make.com/n8n orchestrations to route webhook payloads into CRM systems and branching logic.</li>
+                        <li>Integrated payment endpoints for invoice generation and automatic transaction state handling.</li>
+                        <li>Implemented conditional email and SMS playbooks that keep onboarding momentum high.</li>
+                    </ul>
+                </details>
+            </article>
 
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>3. AI Voice Agent & CRM Integration</h3>
-                <p>Developed and deployed a robust multi-department AI voice agent system handling over 500 daily
-                    inbound calls. Integrated voice interactions with Airtable CRM via automated workflows for real-time
-                    lead scoring and intelligent call routing.</p>
-                <p class="highlight">Highlight: Automated calendar booking reduced average response times by 70%.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">High-volume inbound voice automation with real-time routing, booking, and CRM enrichment.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 4%; top: 38%;">Inbound Calls</span>
+                    <span class="flow-node" style="left: 26%; top: 14%;">Voice AI</span>
+                    <span class="flow-node" style="left: 26%; top: 64%;">NLP Classifier</span>
+                    <span class="flow-node" style="left: 50%; top: 14%;">Lead Scoring</span>
+                    <span class="flow-node" style="left: 50%; top: 64%;">Call Routing</span>
+                    <span class="flow-node" style="left: 72%; top: 38%;">Airtable CRM</span>
+                    <span class="flow-node" style="left: 88%; top: 38%;">Calendar</span>
+                    <span class="flow-link" style="left: 15%; top: 48%; width: 15%; --delay: 0s;"></span>
+                    <span class="flow-link" style="left: 32%; top: 25%; width: 18%; --delay: 0.7s;"></span>
+                    <span class="flow-link" style="left: 32%; top: 72%; width: 18%; --delay: 1.4s;"></span>
+                    <span class="flow-link" style="left: 59%; top: 30%; width: 14%; transform: rotate(16deg); --delay: 2.1s;"></span>
+                    <span class="flow-link" style="left: 80%; top: 48%; width: 8%; --delay: 2.8s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Handles 500+ inbound calls daily across multiple departments.</li>
+                    <li>Automates lead qualification, routing, and booking decisions.</li>
+                    <li>Cut response time by 70% and removed repetitive manual updates.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Deployed a robust multi-department voice automation system aligned with operational workflows.</li>
+                        <li>Linked live call outcomes to Airtable records for faster handoff and cleaner CRM state.</li>
+                        <li>Created automated booking and queue logic for context-aware call handling.</li>
+                        <li>Collected and sanitized call logs to continuously improve model-level NLP quality.</li>
+                    </ul>
+                </details>
+            </article>
 
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>4. Backend Workflow & Lead Funnel Automation</h3>
-                <p>Architected complete backend workflows and customer journey automations utilizing GoHighLevel (GHL).
-                    Managed the full lifecycle from lead capture to conversion by integrating calendar systems and
-                    SMS/email sequences.</p>
-                <p class="highlight">Highlight: Built high-converting lead generation funnels and payment pipelines.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">Unified lead lifecycle architecture from first contact through conversion and payment.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 4%; top: 38%;">Traffic Sources</span>
+                    <span class="flow-node" style="left: 26%; top: 14%;">Funnels</span>
+                    <span class="flow-node" style="left: 26%; top: 64%;">Intake Logic</span>
+                    <span class="flow-node" style="left: 50%; top: 38%;">GoHighLevel</span>
+                    <span class="flow-node" style="left: 70%; top: 14%;">Nurture</span>
+                    <span class="flow-node" style="left: 70%; top: 64%;">Payments</span>
+                    <span class="flow-node" style="left: 88%; top: 38%;">Conversion</span>
+                    <span class="flow-link" style="left: 16%; top: 48%; width: 14%; --delay: 0.3s;"></span>
+                    <span class="flow-link" style="left: 31%; top: 26%; width: 20%; transform: rotate(16deg); --delay: 0.9s;"></span>
+                    <span class="flow-link" style="left: 31%; top: 71%; width: 20%; transform: rotate(-16deg); --delay: 1.5s;"></span>
+                    <span class="flow-link" style="left: 58%; top: 48%; width: 14%; --delay: 2.1s;"></span>
+                    <span class="flow-link" style="left: 80%; top: 48%; width: 8%; --delay: 2.7s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Connects lead capture, appointment logic, and payment workflows.</li>
+                    <li>Improves funnel consistency across different client industries.</li>
+                    <li>Supports faster lead response and stronger close rates.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Architected backend workflow systems in GHL to orchestrate full customer journeys.</li>
+                        <li>Integrated calendar, SMS, and email systems into synchronized conversion pipelines.</li>
+                        <li>Built custom post-call tooling to streamline CRM follow-up and sales operations.</li>
+                        <li>Mapped stakeholder pain points into high-ROI workflow blueprints.</li>
+                    </ul>
+                </details>
+            </article>
 
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>5. Database Architecture & Business Automation</h3>
-                <p>Built customized, scalable CRM databases tailored to strict business requirements for scaling
-                    clients. Designed zero-friction customer workflows utilizing agile sprint cycles (Jira, Asana,
-                    monday.com) to manage automation deployments.</p>
-                <p class="highlight">Highlight: Reduced manual onboarding time by 60%.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">Scalable CRM schema design and migration pathways for fast-growing operations.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 4%; top: 38%;">Requirements</span>
+                    <span class="flow-node" style="left: 27%; top: 14%;">Airtable Proto</span>
+                    <span class="flow-node" style="left: 27%; top: 64%;">Data Cleanup</span>
+                    <span class="flow-node" style="left: 51%; top: 38%;">Schema Layer</span>
+                    <span class="flow-node" style="left: 71%; top: 14%;">PostgreSQL</span>
+                    <span class="flow-node" style="left: 71%; top: 64%;">Automation Rules</span>
+                    <span class="flow-node" style="left: 88%; top: 38%;">Ops Dashboard</span>
+                    <span class="flow-link" style="left: 16%; top: 48%; width: 16%; --delay: 0.1s;"></span>
+                    <span class="flow-link" style="left: 34%; top: 26%; width: 18%; transform: rotate(18deg); --delay: 0.8s;"></span>
+                    <span class="flow-link" style="left: 34%; top: 71%; width: 18%; transform: rotate(-18deg); --delay: 1.5s;"></span>
+                    <span class="flow-link" style="left: 60%; top: 48%; width: 13%; --delay: 2.2s;"></span>
+                    <span class="flow-link" style="left: 80%; top: 48%; width: 8%; --delay: 2.9s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Moves teams from ad-hoc data handling to stable database design.</li>
+                    <li>Reduces onboarding friction through stronger process automation.</li>
+                    <li>Enables reliable reporting and cleaner operational visibility.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Designed and implemented scalable CRM data models mapped to strict business constraints.</li>
+                        <li>Led technical transitions from early-stage Airtable structures toward stronger database foundations.</li>
+                        <li>Built zero-friction onboarding and follow-up automations to reduce manual effort.</li>
+                        <li>Coordinated deployment cycles with agile project tooling and stakeholder alignment.</li>
+                    </ul>
+                </details>
+            </article>
 
-            <div class="card project-card">
+            <article class="card flow-project-card">
                 <h3>6. Expert Web Development & WordPress Architecture</h3>
-                <p>Developed and customized responsive web interfaces using HTML, CSS, and WordPress (Elementor).
-                    Ensured high-fidelity UI translations and seamless end-user experiences, built on a strong
-                    foundational knowledge of web architecture and API endpoints.</p>
-                <div class="card-glow"></div>
-            </div>
+                <p class="flow-description">Responsive front-end delivery with practical API-aware architecture and UX consistency.</p>
+                <div class="flow-map">
+                    <span class="flow-node" style="left: 4%; top: 38%;">Design Assets</span>
+                    <span class="flow-node" style="left: 27%; top: 14%;">HTML/CSS</span>
+                    <span class="flow-node" style="left: 27%; top: 64%;">WordPress</span>
+                    <span class="flow-node" style="left: 50%; top: 38%;">UI Build</span>
+                    <span class="flow-node" style="left: 70%; top: 14%;">QA</span>
+                    <span class="flow-node" style="left: 70%; top: 64%;">API Hooks</span>
+                    <span class="flow-node" style="left: 88%; top: 38%;">Production</span>
+                    <span class="flow-link" style="left: 16%; top: 48%; width: 15%; --delay: 0.2s;"></span>
+                    <span class="flow-link" style="left: 33%; top: 25%; width: 18%; transform: rotate(18deg); --delay: 0.9s;"></span>
+                    <span class="flow-link" style="left: 33%; top: 72%; width: 18%; transform: rotate(-18deg); --delay: 1.6s;"></span>
+                    <span class="flow-link" style="left: 58%; top: 48%; width: 14%; --delay: 2.3s;"></span>
+                    <span class="flow-link" style="left: 80%; top: 48%; width: 8%; --delay: 3s;"></span>
+                </div>
+                <ul class="impact-list">
+                    <li>Ships responsive interfaces with consistent UX across devices.</li>
+                    <li>Bridges design, QA, and implementation for high-fidelity releases.</li>
+                    <li>Supports practical API connectivity and extensible architecture.</li>
+                </ul>
+                <details class="flow-details">
+                    <summary>View full details</summary>
+                    <ul>
+                        <li>Developed responsive websites and page systems with HTML, CSS, and WordPress (Elementor).</li>
+                        <li>Collaborated with design and QA teams to preserve visual fidelity in production.</li>
+                        <li>Applied architecture fundamentals that supported API endpoint integration and future growth.</li>
+                    </ul>
+                </details>
+            </article>
 
         </div>
     </section>
