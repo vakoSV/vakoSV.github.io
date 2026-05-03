@@ -285,123 +285,169 @@ document.addEventListener('DOMContentLoaded', () => {
             palette: '<circle cx="13.5" cy="6.5" r="0.6" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.6" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.6" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.6" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
             send: '<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>',
             rules: '<circle cx="3" cy="6" r="0.6" fill="currentColor"/><circle cx="3" cy="12" r="0.6" fill="currentColor"/><circle cx="3" cy="18" r="0.6" fill="currentColor"/><path d="M8 6h13M8 12h13M8 18h13"/>',
+            mcp: '<circle cx="12" cy="12" r="3.2"/><circle cx="5" cy="5" r="1.6" fill="currentColor"/><circle cx="19" cy="5" r="1.6" fill="currentColor"/><circle cx="5" cy="19" r="1.6" fill="currentColor"/><circle cx="19" cy="19" r="1.6" fill="currentColor"/><path d="M6.4 6.4L9.7 9.7M17.6 6.4L14.3 9.7M6.4 17.6L9.7 14.3M17.6 17.6L14.3 14.3"/>',
+            card: '<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M6 15h4"/>',
+            mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/>',
+            branch: '<circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 7l8 4M8 17l8-4"/>',
+            book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5V21h16M9 7h7"/>',
+            megaphone: '<path d="M3 11v3l4 1.5v-6zM7 9.5L18 4v16L7 14.5z"/><path d="M11 21l3-1V14"/>',
+            layers: '<path d="M12 2L22 8.5L12 15L2 8.5z"/><path d="M2 15.5L12 22L22 15.5"/>',
         };
 
         const PROJECTS = [
+            // 1) RADIAL HUB: MCP center, clients/data sources orbit around it
             {
                 id: 'rag', accent: 'cyan', accentColor: '#22d3ee',
                 title: 'Enterprise Internal AI Assistant & RAG',
-                description: 'Role-gated internal assistant grounded in private company knowledge.',
-                chip: 'Private-doc grounded responses',
+                description: 'MCP-powered hub bridging clients, LLMs, vector stores and source-of-truth systems.',
+                chip: 'MCP server, private-doc grounded',
                 nodes: [
-                    { id: 'a', label: 'Open WebUI', icon: 'chat',     x: 38,  y: 50  },
-                    { id: 'b', label: 'n8n Core',   icon: 'workflow', x: 134, y: 50  },
-                    { id: 'c', label: 'RBAC',       icon: 'shield',   x: 230, y: 50  },
-                    { id: 'd', label: 'Supabase',   icon: 'database', x: 134, y: 145 },
-                    { id: 'e', label: 'Answer',     icon: 'sparkles', x: 326, y: 98  },
+                    { id: 'webui',     label: 'Open WebUI', icon: 'chat',     x: 38,  y: 110 },
+                    { id: 'n8n',       label: 'n8n',        icon: 'workflow', x: 115, y: 50  },
+                    { id: 'anthropic', label: 'Anthropic',  icon: 'sparkles', x: 265, y: 50  },
+                    { id: 'mcp',       label: 'MCP',        icon: 'mcp',      x: 190, y: 110 },
+                    { id: 'supabase',  label: 'Supabase',   icon: 'database', x: 115, y: 170 },
+                    { id: 'github',    label: 'GitHub',     icon: 'code',     x: 265, y: 170 },
+                    { id: 'answer',    label: 'Answer',     icon: 'send',     x: 320, y: 110 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'webui',     to: 'mcp' },
+                    { from: 'n8n',       to: 'mcp' },
+                    { from: 'anthropic', to: 'mcp' },
+                    { from: 'supabase',  to: 'mcp' },
+                    { from: 'github',    to: 'mcp' },
+                    { from: 'mcp',       to: 'answer' },
                 ],
-                outputs: ['e'],
+                outputs: ['answer'],
             },
+
+            // 2) FAN-OUT / FAN-IN diamond: webhook splits to 3 systems, all merge into Done
             {
                 id: 'onboarding', accent: 'green', accentColor: '#34d399',
                 title: 'End-to-End Automated Customer Onboarding',
-                description: 'Zero-touch journey from form submission to paid client state.',
+                description: 'Webhook fans out to billing, CRM and messaging in parallel, then converges.',
                 chip: 'Billing + email/SMS fully automated',
                 nodes: [
-                    { id: 'a', label: 'Lead Form', icon: 'form',    x: 38,  y: 50  },
-                    { id: 'b', label: 'Webhook',   icon: 'webhook', x: 134, y: 50  },
-                    { id: 'c', label: 'Segment',   icon: 'users',   x: 230, y: 50  },
-                    { id: 'd', label: 'CRM + Pay', icon: 'crm',     x: 134, y: 145 },
-                    { id: 'e', label: 'Follow-up', icon: 'bell',    x: 326, y: 98  },
+                    { id: 'form',    label: 'Lead Form', icon: 'form',    x: 38,  y: 110 },
+                    { id: 'hook',    label: 'Webhook',   icon: 'webhook', x: 110, y: 110 },
+                    { id: 'stripe',  label: 'Stripe',    icon: 'card',    x: 200, y: 50  },
+                    { id: 'crm',     label: 'CRM',       icon: 'crm',     x: 200, y: 110 },
+                    { id: 'email',   label: 'Email/SMS', icon: 'mail',    x: 200, y: 170 },
+                    { id: 'done',    label: 'Done',      icon: 'check',   x: 300, y: 110 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'form',   to: 'hook'   },
+                    { from: 'hook',   to: 'stripe' },
+                    { from: 'hook',   to: 'crm'    },
+                    { from: 'hook',   to: 'email'  },
+                    { from: 'stripe', to: 'done'   },
+                    { from: 'crm',    to: 'done'   },
+                    { from: 'email',  to: 'done'   },
                 ],
-                outputs: ['e'],
+                outputs: ['done'],
             },
+
+            // 3) DECISION TREE with three independent output arrows leaving the card
             {
                 id: 'voice', accent: 'blue', accentColor: '#60a5fa',
                 title: 'AI Voice Agent & CRM Integration',
-                description: 'High-volume inbound automation with routing and booking logic.',
+                description: 'Voice intent classification routes each call to the right downstream system.',
                 chip: '500+ daily calls handled',
                 nodes: [
-                    { id: 'a', label: 'Inbound',   icon: 'phone',    x: 38,  y: 50  },
-                    { id: 'b', label: 'Voice AI',  icon: 'sparkles', x: 134, y: 50  },
-                    { id: 'c', label: 'NLP Route', icon: 'share',    x: 230, y: 50  },
-                    { id: 'd', label: 'Airtable',  icon: 'database', x: 134, y: 145 },
-                    { id: 'e', label: 'Calendar',  icon: 'calendar', x: 326, y: 98  },
+                    { id: 'phone',  label: 'Inbound',   icon: 'phone',    x: 38,  y: 110 },
+                    { id: 'voice',  label: 'Voice AI',  icon: 'sparkles', x: 108, y: 110 },
+                    { id: 'intent', label: 'Intent',    icon: 'branch',   x: 188, y: 110 },
+                    { id: 'crm',    label: 'CRM',       icon: 'crm',      x: 285, y: 50  },
+                    { id: 'cal',    label: 'Calendar',  icon: 'calendar', x: 285, y: 110 },
+                    { id: 'kb',     label: 'Knowledge', icon: 'book',     x: 285, y: 170 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'phone',  to: 'voice'  },
+                    { from: 'voice',  to: 'intent' },
+                    { from: 'intent', to: 'crm'    },
+                    { from: 'intent', to: 'cal'    },
+                    { from: 'intent', to: 'kb'     },
                 ],
-                outputs: ['e'],
+                outputs: ['crm', 'cal', 'kb'],
             },
+
+            // 4) CONVERGENT FUNNEL: three traffic sources collapse into one nurture pipeline
             {
                 id: 'funnel', accent: 'purple', accentColor: '#a78bfa',
                 title: 'Backend Workflow & Lead Funnel Automation',
-                description: 'Unified traffic, nurture, conversion, and payment orchestration.',
+                description: 'Three traffic sources converge into a single nurture-and-convert pipeline.',
                 chip: 'Faster response and cleaner close path',
                 nodes: [
-                    { id: 'a', label: 'Traffic',  icon: 'chart',    x: 38,  y: 50  },
-                    { id: 'b', label: 'Funnels',  icon: 'filter',   x: 134, y: 50  },
-                    { id: 'c', label: 'Nurture',  icon: 'bell',     x: 230, y: 50  },
-                    { id: 'd', label: 'GHL Core', icon: 'workflow', x: 134, y: 145 },
-                    { id: 'e', label: 'Convert',  icon: 'check',    x: 326, y: 98  },
+                    { id: 'ads',      label: 'Ads',      icon: 'megaphone', x: 38,  y: 50  },
+                    { id: 'organic',  label: 'Organic',  icon: 'globe',     x: 38,  y: 110 },
+                    { id: 'referral', label: 'Referral', icon: 'users',     x: 38,  y: 170 },
+                    { id: 'funnel',   label: 'Funnels',  icon: 'filter',    x: 130, y: 110 },
+                    { id: 'nurture',  label: 'Nurture',  icon: 'bell',      x: 215, y: 110 },
+                    { id: 'ghl',      label: 'GHL Core', icon: 'workflow',  x: 305, y: 110 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'ads',      to: 'funnel'  },
+                    { from: 'organic',  to: 'funnel'  },
+                    { from: 'referral', to: 'funnel'  },
+                    { from: 'funnel',   to: 'nurture' },
+                    { from: 'nurture',  to: 'ghl'     },
                 ],
-                outputs: ['e'],
+                outputs: ['ghl'],
             },
+
+            // 5) DIAMOND: two sources -> Schema -> branches (Rules + Postgres) -> Dashboard
             {
                 id: 'database', accent: 'orange', accentColor: '#fb923c',
                 title: 'Database Architecture & Business Automation',
-                description: 'Scaled data models from prototype structures to stable systems.',
+                description: 'Schema-first design splits validation rules from storage, then re-merges for reporting.',
                 chip: '60% onboarding time reduction',
                 nodes: [
-                    { id: 'a', label: 'Airtable',  icon: 'database', x: 38,  y: 50  },
-                    { id: 'b', label: 'Schema',    icon: 'form',     x: 134, y: 50  },
-                    { id: 'c', label: 'Rules',     icon: 'rules',    x: 230, y: 50  },
-                    { id: 'd', label: 'Postgres',  icon: 'database', x: 134, y: 145 },
-                    { id: 'e', label: 'Dashboard', icon: 'chart',    x: 326, y: 98  },
+                    { id: 'airtable',  label: 'Airtable',  icon: 'database', x: 38,  y: 50  },
+                    { id: 'forms',     label: 'Forms',     icon: 'form',     x: 38,  y: 170 },
+                    { id: 'schema',    label: 'Schema',    icon: 'layers',   x: 135, y: 110 },
+                    { id: 'rules',     label: 'Rules',     icon: 'rules',    x: 220, y: 50  },
+                    { id: 'postgres',  label: 'Postgres',  icon: 'database', x: 220, y: 170 },
+                    { id: 'dashboard', label: 'Dashboard', icon: 'chart',    x: 320, y: 110 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'airtable', to: 'schema'    },
+                    { from: 'forms',    to: 'schema'    },
+                    { from: 'schema',   to: 'rules'     },
+                    { from: 'schema',   to: 'postgres'  },
+                    { from: 'rules',    to: 'dashboard' },
+                    { from: 'postgres', to: 'dashboard' },
                 ],
-                outputs: ['e'],
+                outputs: ['dashboard'],
             },
+
+            // 6) PURE LINEAR pipeline: deliberately the simplest shape — production deploy
             {
                 id: 'webdev', accent: 'pink', accentColor: '#f472b6',
                 title: 'Web Development & WordPress Architecture',
-                description: 'Responsive UI delivery with QA alignment and API-readiness.',
+                description: 'Straightforward design-to-publish pipeline with QA and API integration in line.',
                 chip: 'Production-ready interfaces shipped',
                 nodes: [
-                    { id: 'a', label: 'Design',    icon: 'palette', x: 38,  y: 50  },
-                    { id: 'b', label: 'HTML/CSS',  icon: 'code',    x: 134, y: 50  },
-                    { id: 'c', label: 'QA + API',  icon: 'check',   x: 230, y: 50  },
-                    { id: 'd', label: 'WordPress', icon: 'globe',   x: 134, y: 145 },
-                    { id: 'e', label: 'Publish',   icon: 'send',    x: 326, y: 98  },
+                    { id: 'design',  label: 'Design',    icon: 'palette', x: 38,  y: 110 },
+                    { id: 'code',    label: 'HTML/CSS',  icon: 'code',    x: 110, y: 110 },
+                    { id: 'qa',      label: 'QA + API',  icon: 'check',   x: 182, y: 110 },
+                    { id: 'wp',      label: 'WordPress', icon: 'globe',   x: 254, y: 110 },
+                    { id: 'publish', label: 'Publish',   icon: 'send',    x: 326, y: 110 },
                 ],
                 edges: [
-                    { from: 'a', to: 'b' }, { from: 'b', to: 'c' }, { from: 'b', to: 'd' },
-                    { from: 'c', to: 'e' }, { from: 'd', to: 'e' },
+                    { from: 'design', to: 'code'    },
+                    { from: 'code',   to: 'qa'      },
+                    { from: 'qa',     to: 'wp'      },
+                    { from: 'wp',     to: 'publish' },
                 ],
-                outputs: ['e'],
+                outputs: ['publish'],
             },
         ];
 
         const VIEW_W = 380;
-        const VIEW_H = 200;
+        const VIEW_H = 220;
         const NODE_HALF = 26;
         const DEST_GAP = 6;
+        const DIAG_THRESHOLD = 40;
 
         const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => (
             { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -409,7 +455,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function chooseAnchors(from, to) {
             const dx = to.x - from.x, dy = to.y - from.y;
-            if (Math.abs(dx) > Math.abs(dy)) {
+            const adx = Math.abs(dx), ady = Math.abs(dy);
+
+            // Clearly diagonal: anchor on corresponding corners so radial spokes
+            // and fan-out / fan-in patterns don't pile onto a single edge midpoint.
+            if (adx > DIAG_THRESHOLD && ady > DIAG_THRESHOLD &&
+                Math.min(adx, ady) / Math.max(adx, ady) > 0.45) {
+                const dirX = dx > 0 ? 1 : -1;
+                const dirY = dy > 0 ? 1 : -1;
+                return [
+                    { x: from.x + dirX * NODE_HALF,
+                      y: from.y + dirY * NODE_HALF },
+                    { x: to.x   - dirX * (NODE_HALF + DEST_GAP),
+                      y: to.y   - dirY * (NODE_HALF + DEST_GAP) },
+                ];
+            }
+
+            // Otherwise: pick whichever of horizontal / vertical dominates.
+            if (adx > ady) {
                 if (dx > 0) return [
                     { x: from.x + NODE_HALF,            y: from.y },
                     { x: to.x   - NODE_HALF - DEST_GAP, y: to.y   },
